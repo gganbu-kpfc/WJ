@@ -63,3 +63,18 @@ keywordChips.forEach((chip) => {
 });
 
 filterShops();
+// 카드 설명 글자 자르기
+function truncateText() {
+  const descs = document.querySelectorAll(".member-shop-desc");
+
+  descs.forEach((el) => {
+    const fullText = el.innerText;
+
+    if (fullText.length > 60) {
+      el.innerText = fullText.substring(0, 60) + "...";
+    }
+  });
+}
+
+// 페이지 로딩 시 실행
+truncateText();
