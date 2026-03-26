@@ -1,41 +1,39 @@
-// 로그인
-document.getElementById("loginBtn").addEventListener("click", async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로그인 | 원주청년소상공인협회</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+  <section class="section">
+    <div class="container">
+      <div class="form-box">
+        <h1>로그인 / 회원가입</h1>
 
-  if (error) {
-    alert("로그인 실패");
-    console.error(error);
-  } else {
-    alert("로그인 성공");
-    window.location.href = "members.html";
-  }
-});
+        <div class="form-group">
+          <input type="email" id="email" placeholder="이메일 입력" />
+        </div>
 
-// 회원가입
-document.getElementById("signupBtn").addEventListener("click", async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+        <div class="form-group">
+          <input type="password" id="password" placeholder="비밀번호 입력" />
+        </div>
 
-  const { error } = await supabase.auth.signUp({
-    email,
-    password,
-  });
+        <button id="loginBtn" class="btn btn-primary full-btn">
+          로그인
+        </button>
 
-  if (error) {
-    alert("회원가입 실패");
-    console.error(error);
-  } else {
-    alert("회원가입 성공 (이메일 확인 필요)");
-  }
-});
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script src="assets/js/supabase-config.js"></script>
-<script src="assets/js/auth.js"></script>
+        <button id="signupBtn" class="btn btn-outline full-btn" type="button">
+          회원가입
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/auth.js"></script>
 </body>
 </html>
