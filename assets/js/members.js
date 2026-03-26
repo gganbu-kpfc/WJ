@@ -170,3 +170,59 @@ keywordChips.forEach((chip) => {
 });
 
 loadShops();
+async function loadShops() {
+  const { data, error } = await supabase
+    .from("member_shops")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const shopList = document.getElementById("shopList");
+  shopList.innerHTML = "";
+
+  data.forEach((shop) => {
+    const card = document.createElement("article");
+    card.className = "member-shop-card";
+
+    if (shop.benefit) {
+      card.classList.add("benefit-member");
+    }
+
+    if (shop.is_excellent) {
+      card.classList.add("excellent-member");
+    }
+
+    card.innerHTML = `
+      <img src="${shop.image_url_1 || 'assets/img/default-shop.jpg'}" />
+
+      <div class="member-shop-card-body">
+        <span class="shop-badge">
+          ${shop.is_excellent ? "우수회원" : "회원업체"}
+        </span>
+
+        <h3>${shop.shop_name}</h3>
+
+        <p class="member-shop-meta">대표자: ${shop.owner_name}</p>
+        <p class="member-shop-meta">업종: ${shop.category || "-"}</p>
+        <p class="member-shop-meta">주소: ${shop.address || "-"}</p>
+
+        <p class="member-shop-benefit">
+          회원혜택: ${shop.benefit || "없음"}
+        </p>
+
+        <p class="member-shop-desc">
+          ${shop.short_desc || ""}
+        </p>
+      </div>
+    `;
+
+    shopList.appendChild(card);
+  });
+}
+
+// 페이지 로드 시 실행
+loadShops();
