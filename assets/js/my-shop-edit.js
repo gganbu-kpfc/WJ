@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // 내 글 불러오기
   const { data, error } = await supabase
     .from("member_shops")
     .select("*")
@@ -17,18 +16,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (error) {
     alert("등록된 업장이 없습니다.");
+    console.error(error);
     return;
   }
 
   const form = document.getElementById("shopForm");
 
-  form[0].value = data.owner_name;
-  form[1].value = data.shop_name;
-  form[2].value = data.category;
-  form[3].value = data.address;
-  form[4].value = data.benefit;
-  form[5].value = data.short_desc;
-  form[6].value = data.long_desc;
+  form[0].value = data.owner_name || "";
+  form[1].value = data.shop_name || "";
+  form[2].value = data.category || "";
+  form[3].value = data.address || "";
+  form[4].value = data.benefit || "";
+  form[5].value = data.short_desc || "";
+  form[6].value = data.long_desc || "";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -58,4 +58,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.location.href = "members.html";
   });
 });
-
