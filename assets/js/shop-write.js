@@ -12,6 +12,8 @@ document.getElementById("shopForm").addEventListener("submit", async (e) => {
 
   const ownerName = document.getElementById("ownerName").value.trim();
   const shopName = document.getElementById("shopName").value.trim();
+  const homepage = document.getElementById("homepage").value.trim();
+  const phone = document.getElementById("phone").value.trim();
   const category = document.getElementById("category").value.trim();
   const address = document.getElementById("address").value.trim();
   const benefit = document.getElementById("benefit").value.trim();
