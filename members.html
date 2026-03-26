@@ -6,6 +6,24 @@
   <title>회원업체소개 | 원주청년소상공인협회</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+  <!-- 상세 모달 -->
+<div id="shopModal" class="shop-modal">
+  <div class="shop-modal-content">
+
+    <span class="modal-close" id="modalClose">×</span>
+
+    <img id="modalImg" src="" class="modal-img">
+
+    <h2 id="modalTitle"></h2>
+
+    <p id="modalMeta"></p>
+
+    <p id="modalBenefit" class="modal-benefit"></p>
+
+    <p id="modalDesc"></p>
+
+  </div>
+</div>
 <body>
   <!-- 헤더 -->
   <header class="site-header">
@@ -90,7 +108,14 @@
           </div>
         </article>
 
-        <article class="member-shop-card benefit-member"
+      <article class="member-shop-card benefit-member"
+  data-title="단계포차"
+  data-meta="술집 · 원주시 단계동"
+  data-benefit="회원혜택: 음료 1병 제공"
+  data-desc="회식과 단체 모임에 적합하며 다양한 메뉴와 넓은 좌석을 제공하는 단계동 대표 술집입니다."
+  data-img="assets/img/default-shop.jpg"
+>
+          
           data-search="단계포차 단계 술집 포차 단계동 회식 단체모임 소주 맥주 안주 야식 회원혜택"
         >
           <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
