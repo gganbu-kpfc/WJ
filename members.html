@@ -53,28 +53,51 @@
     </div>
   </section>
 
-  <!-- 검색 영역 -->
-  <section class="section member-search-section">
-    <div class="container">
+      <!-- 검색 영역 -->
       <div class="member-search-box">
-        <input type="text" id="shopSearchInput" placeholder="예: 단계동, 술집, 카페, 고깃집, 회식" />
+        <input type="text" id="shopSearchInput" placeholder="업체명, 지역, 업종, 혜택, 설명으로 검색하세요" />
         <button id="shopSearchBtn">검색</button>
       </div>
 
-<div class="keyword-chip-group">
-  <button class="keyword-chip" data-filter="benefit">회원혜택</button>
-  <button class="keyword-chip" data-filter="excellent">우수회원</button>
-  <button class="keyword-chip reset-chip" data-filter="all">전체보기</button>
-</div>
+      <div class="member-toolbar">
+        <div class="keyword-chip-group">
+          <button class="keyword-chip active" data-filter="all">전체보기</button>
+          <button class="keyword-chip" data-filter="benefit">회원혜택</button>
+          <button class="keyword-chip" data-filter="excellent">우수회원</button>
+        </div>
+
+        <div class="member-action-buttons">
+          <a href="shop-write.html" class="btn btn-primary">업장 등록하기</a>
+          <a href="my-shop-edit.html" class="btn btn-outline">내 글 수정</a>
+        </div>
+      </div>
 
       <div class="member-shop-grid" id="shopList">
-        <article class="member-shop-card excellent-member"
-          data-search="단계동 술집 회식 단체모임 회원혜택 우수회원 카페 커피 장기렌트 휴대폰 정책자금"
+        <article class="member-shop-card benefit-member excellent-member"
+          data-search="깐부파트너스 깐부 신차장기렌트 장기렌트 렌트 리스 신차 자동차 차량상담 원주 회원혜택 업체소개 신차문의"
         >
           <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
           <div class="member-shop-card-body">
             <span class="shop-badge">회원혜택 제공</span>
-            <h3>단계동 포차</h3>
+            <h3>깐부파트너스</h3>
+            <p class="member-shop-meta">대표자: 이종현</p>
+            <p class="member-shop-meta">업종: 신차 장기렌트 · 리스</p>
+            <p class="member-shop-meta">주소: 원주시</p>
+            <p class="member-shop-benefit">회원혜택: 차량 상담 우선 안내</p>
+            <p class="member-shop-desc">
+              신차 장기렌트와 리스를 중심으로 차량 상담을 진행하는 업체입니다.
+            </p>
+          </div>
+        </article>
+
+        <article class="member-shop-card benefit-member"
+          data-search="단계포차 단계 술집 포차 단계동 회식 단체모임 소주 맥주 안주 야식 회원혜택"
+        >
+          <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
+          <div class="member-shop-card-body">
+            <span class="shop-badge">회원혜택 제공</span>
+            <h3>단계포차</h3>
+            <p class="member-shop-meta">대표자: 홍길동</p>
             <p class="member-shop-meta">업종: 술집</p>
             <p class="member-shop-meta">주소: 원주시 단계동</p>
             <p class="member-shop-benefit">회원혜택: 음료 1병 제공</p>
@@ -84,13 +107,14 @@
           </div>
         </article>
 
-        <article class="member-shop-card"
-          data-search="무실동 카페 디저트 커피 회원혜택 테이크아웃"
+        <article class="member-shop-card benefit-member"
+          data-search="무실브루 무실 카페 커피 디저트 무실동 테이크아웃 회원혜택"
         >
           <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
           <div class="member-shop-card-body">
-            <span class="shop-badge">신규 등록업체</span>
+            <span class="shop-badge">회원혜택 제공</span>
             <h3>무실브루</h3>
+            <p class="member-shop-meta">대표자: 김민수</p>
             <p class="member-shop-meta">업종: 카페</p>
             <p class="member-shop-meta">주소: 원주시 무실동</p>
             <p class="member-shop-benefit">회원혜택: 아메리카노 10% 할인</p>
@@ -100,13 +124,14 @@
           </div>
         </article>
 
-        <article class="member-shop-card"
-          data-search="단계동 고깃집 회식 삼겹살 점심특선 예약 단체"
+        <article class="member-shop-card excellent-member"
+          data-search="원주한판 원주 한판 고깃집 고기 삼겹살 회식 단계동 단체 예약"
         >
           <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
           <div class="member-shop-card-body">
-            <span class="shop-badge">네이버 플레이스</span>
+            <span class="shop-badge">우수회원</span>
             <h3>원주한판</h3>
+            <p class="member-shop-meta">대표자: 박영수</p>
             <p class="member-shop-meta">업종: 고깃집</p>
             <p class="member-shop-meta">주소: 원주시 단계동</p>
             <p class="member-shop-benefit">회원혜택: 예약 시 테이블 우선 안내</p>
@@ -116,13 +141,14 @@
           </div>
         </article>
 
-        <article class="member-shop-card"
-          data-search="반곡동 미용실 헤어샵 회원혜택 커트 염색 예약"
+        <article class="member-shop-card benefit-member"
+          data-search="반곡헤어랩 반곡 헤어랩 미용실 헤어샵 반곡동 커트 염색 예약 회원혜택"
         >
           <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
           <div class="member-shop-card-body">
-            <span class="shop-badge">회원업체</span>
+            <span class="shop-badge">회원혜택 제공</span>
             <h3>반곡헤어랩</h3>
+            <p class="member-shop-meta">대표자: 최수진</p>
             <p class="member-shop-meta">업종: 미용실</p>
             <p class="member-shop-meta">주소: 원주시 반곡동</p>
             <p class="member-shop-benefit">회원혜택: 커트 5% 할인</p>
@@ -132,29 +158,14 @@
           </div>
         </article>
 
-        <article class="member-shop-card"
-          data-search="단계동 분식 떡볶이 배달 간식 야식"
+        <article class="member-shop-card benefit-member"
+          data-search="온리네일 온리 네일 네일샵 뷰티 기업도시 예약 회원혜택 케어"
         >
           <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
           <div class="member-shop-card-body">
-            <span class="shop-badge">회원업체</span>
-            <h3>청년분식</h3>
-            <p class="member-shop-meta">업종: 분식</p>
-            <p class="member-shop-meta">주소: 원주시 단계동</p>
-            <p class="member-shop-benefit">회원혜택: 튀김 서비스</p>
-            <p class="member-shop-desc">
-              떡볶이, 튀김, 순대를 즐길 수 있는 단계동 분식집입니다.
-            </p>
-          </div>
-        </article>
-
-        <article class="member-shop-card"
-          data-search="기업도시 네일 뷰티 회원혜택 예약"
-        >
-          <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
-          <div class="member-shop-card-body">
-            <span class="shop-badge">회원업체</span>
+            <span class="shop-badge">회원혜택 제공</span>
             <h3>온리네일</h3>
+            <p class="member-shop-meta">대표자: 이소정</p>
             <p class="member-shop-meta">업종: 네일샵</p>
             <p class="member-shop-meta">주소: 원주시 기업도시</p>
             <p class="member-shop-benefit">회원혜택: 첫 방문 케어 추가</p>
