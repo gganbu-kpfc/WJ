@@ -20,6 +20,17 @@ function getSearchTarget(shop) {
   return normalizeText(`
     ${shop.shop_name || ""}
     ${shop.owner_name || ""}
+    ${shop.phone ? `
+  <a href="tel:${shop.phone}" class="shop-contact-btn">
+    📞 전화하기
+  </a>
+` : ""}
+
+${shop.homepage ? `
+  <a href="${shop.homepage}" target="_blank" class="shop-link-btn">
+    🔗 홈페이지
+  </a>
+` : ""}
     ${shop.category || ""}
     ${shop.address || ""}
     ${shop.benefit || ""}
