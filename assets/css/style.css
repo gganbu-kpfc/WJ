@@ -953,3 +953,136 @@ img {
   color: #0f9d72;
   margin: 10px 0;
 }
+/* 회원업체소개 페이지 전체 폭 정리 */
+.member-search-section .container,
+.member-preview-section .container,
+.page-hero-members .container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+/* 검색창 너무 길지 않게 */
+.member-search-box {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 12px;
+  max-width: 1100px;
+  margin: 0 auto 18px;
+}
+
+/* 상단 필터 + 버튼 영역도 가운데 정렬 */
+.member-toolbar {
+  max-width: 1100px;
+  margin: 0 auto 28px;
+}
+
+/* 카드 전체 영역 폭 제한 */
+.member-shop-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 카드가 너무 넓게 퍼지지 않게 */
+.member-shop-card {
+  min-width: 0;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  .page-hero-members .container,
+  .member-search-section .container,
+  .member-preview-section .container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .member-search-box {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .member-toolbar {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .member-shop-grid {
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .member-shop-card {
+    width: 100%;
+  }
+
+  .member-shop-card img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .member-shop-card-body {
+    padding: 18px;
+  }
+
+  .member-search-box input {
+    height: 52px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .member-search-box button {
+    height: 52px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .keyword-chip-group {
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .keyword-chip {
+    min-height: 38px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .member-action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .member-mini-btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: 15px;
+    padding: 0 10px;
+    border-radius: 14px;
+  }
+}
+
+/* 더 작은 휴대폰 */
+@media (max-width: 480px) {
+  .page-hero-members .container,
+  .member-search-section .container,
+  .member-preview-section .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .member-shop-card-body {
+    padding: 16px;
+  }
+
+  .section-title-box h2,
+  .page-hero h1 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+}
