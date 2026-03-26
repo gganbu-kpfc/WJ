@@ -59,22 +59,26 @@ document.getElementById("shopForm").addEventListener("submit", async (e) => {
   }
 
   const { error: insertError } = await window.sb
-    .from("member_shops")
-    .insert([
-      {
-        user_id: user.id,
-        owner_name: ownerName,
-        shop_name: shopName,
-        category,
-        address,
-        benefit,
-        short_desc: shortDesc,
-        long_desc: longDesc,
-        image_url_1: imageUrls[0],
-        image_url_2: imageUrls[1],
-        image_url_3: imageUrls[2],
-      },
-    ]);
+  .from("member_shops")
+  .insert([
+    {
+      user_id: user.id,
+      owner_name: ownerName,
+      shop_name: shopName,
+      homepage,
+      phone,
+      category,
+      address,
+      benefit,
+      short_desc: shortDesc,
+      long_desc: longDesc,
+      homepage,
+      phone,
+      image_url_1: imageUrls[0],
+      image_url_2: imageUrls[1],
+      image_url_3: imageUrls[2],
+    },
+  ]);
 
   if (insertError) {
     console.error(insertError);
