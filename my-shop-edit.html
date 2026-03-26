@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내 글 수정 | 원주청년소상공인협회</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <img src="assets/img/logo-association.png" alt="원주청년소상공인협회 로고" class="logo" />
+        <img src="assets/img/logo-wonju.png" alt="원주시 로고" class="logo wonju-logo" />
+      </a>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="form-box">
+        <h1>내 글 수정</h1>
+        <p class="form-desc">등록한 업장 정보를 수정해주세요.</p>
+
+        <form id="shopForm">
+          <div class="form-group">
+            <label>대표자명</label>
+            <input type="text" placeholder="대표자 이름 입력" required />
+          </div>
+
+          <div class="form-group">
+            <label>업체명</label>
+            <input type="text" placeholder="업체명 입력" required />
+          </div>
+
+          <div class="form-group">
+            <label>업종</label>
+            <input type="text" placeholder="예: 술집, 카페, 네일샵" />
+          </div>
+
+          <div class="form-group">
+            <label>주소</label>
+            <input type="text" placeholder="예: 원주시 단계동" />
+          </div>
+
+          <div class="form-group">
+            <label>회원혜택</label>
+            <input type="text" placeholder="예: 음료 1병 제공" />
+          </div>
+
+          <div class="form-group">
+            <label>업체 소개</label>
+            <textarea rows="4" placeholder="업체를 간단히 소개해주세요"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>상세 설명</label>
+            <textarea rows="5" placeholder="업체 상세 설명 입력"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-btn">
+            수정 완료
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/my-shop-edit.js"></script>
+</body>
+</html>
