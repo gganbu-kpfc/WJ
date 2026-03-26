@@ -17,7 +17,6 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   }
 });
 
-// 회원가입
 document.getElementById("signupBtn").addEventListener("click", async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
