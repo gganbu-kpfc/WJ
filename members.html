@@ -61,22 +61,20 @@
         <button id="shopSearchBtn">검색</button>
       </div>
 
-      <div class="keyword-chip-group">
-        <button class="keyword-chip" data-keyword="단계동">단계동</button>
-        <button class="keyword-chip" data-keyword="술집">술집</button>
-        <button class="keyword-chip" data-keyword="카페">카페</button>
-        <button class="keyword-chip" data-keyword="고깃집">고깃집</button>
-        <button class="keyword-chip" data-keyword="회원혜택">회원혜택</button>
-      </div>
+<div class="keyword-chip-group">
+  <button class="keyword-chip" data-filter="benefit">회원혜택</button>
+  <button class="keyword-chip" data-filter="excellent">우수회원</button>
+  <button class="keyword-chip reset-chip" data-filter="all">전체보기</button>
+</div>
 
       <div class="member-shop-grid" id="shopList">
-        <article class="member-shop-card"
-          data-search="단계동 술집 회식 단체모임 회원혜택 소주맥주 야식"
+        <article class="member-shop-card excellent-member"
+          data-search="단계동 술집 회식 단체모임 회원혜택 우수회원 카페 커피 장기렌트 휴대폰 정책자금"
         >
           <img src="assets/img/default-shop.jpg" alt="회원업체 사진" />
           <div class="member-shop-card-body">
             <span class="shop-badge">회원혜택 제공</span>
-            <h3>단계포차</h3>
+            <h3>단계동 포차</h3>
             <p class="member-shop-meta">업종: 술집</p>
             <p class="member-shop-meta">주소: 원주시 단계동</p>
             <p class="member-shop-benefit">회원혜택: 음료 1병 제공</p>
