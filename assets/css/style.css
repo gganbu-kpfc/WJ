@@ -1194,3 +1194,27 @@ img {
     padding: 16px;
   }
 }
+.login-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.login-btn-row .btn {
+  width: 30%;
+  min-width: 120px;
+  min-height: 52px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .login-btn-row {
+    flex-wrap: nowrap;
+  }
+
+  .login-btn-row .btn {
+    width: 48%;
+    min-width: 0;
+  }
+}
