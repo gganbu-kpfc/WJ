@@ -4,14 +4,30 @@ const shopCards = document.querySelectorAll(".member-shop-card");
 const emptyMessage = document.getElementById("emptyResultMessage");
 const keywordChips = document.querySelectorAll(".keyword-chip");
 
+let currentFilter = "all";
+
+function normalizeText(text) {
+  return (text || "").toLowerCase().replace(/\s+/g, "");
+}
+
 function filterShops() {
-  const keyword = searchInput.value.trim().toLowerCase();
+  const keyword = normalizeText(searchInput.value);
   let visibleCount = 0;
 
   shopCards.forEach((card) => {
-    const searchText = card.dataset.search.toLowerCase();
+    const searchText = normalizeText(card.dataset.search);
 
-    if (searchText.includes(keyword)) {
+    const matchKeyword = keyword === "" || searchText.includes(keyword);
+
+    let matchFilter = true;
+
+    if (currentFilter === "benefit") {
+      matchFilter = card.classList.contains("benefit-member");
+    } else if (currentFilter === "excellent") {
+      matchFilter = card.classList.contains("excellent-member");
+    }
+
+    if (matchKeyword && matchFilter) {
       card.style.display = "block";
       visibleCount++;
     } else {
@@ -19,11 +35,7 @@ function filterShops() {
     }
   });
 
-  if (visibleCount === 0) {
-    emptyMessage.style.display = "block";
-  } else {
-    emptyMessage.style.display = "none";
-  }
+  emptyMessage.style.display = visibleCount === 0 ? "block" : "none";
 }
 
 if (searchBtn) {
@@ -31,6 +43,7 @@ if (searchBtn) {
 }
 
 if (searchInput) {
+  searchInput.addEventListener("input", filterShops); // 글자 칠 때마다 바로 검색
   searchInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       filterShops();
@@ -40,8 +53,13 @@ if (searchInput) {
 
 keywordChips.forEach((chip) => {
   chip.addEventListener("click", () => {
-    const keyword = chip.dataset.keyword;
-    searchInput.value = keyword;
+    currentFilter = chip.dataset.filter;
+
+    keywordChips.forEach((btn) => btn.classList.remove("active"));
+    chip.classList.add("active");
+
     filterShops();
   });
 });
+
+filterShops();
