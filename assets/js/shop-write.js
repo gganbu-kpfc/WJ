@@ -72,8 +72,6 @@ document.getElementById("shopForm").addEventListener("submit", async (e) => {
       benefit,
       short_desc: shortDesc,
       long_desc: longDesc,
-      homepage,
-      phone,
       image_url_1: imageUrls[0],
       image_url_2: imageUrls[1],
       image_url_3: imageUrls[2],
