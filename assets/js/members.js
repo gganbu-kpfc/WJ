@@ -78,3 +78,37 @@ function truncateText() {
 
 // 페이지 로딩 시 실행
 truncateText();
+
+// 모달 열기
+const modal = document.getElementById("shopModal");
+const modalClose = document.getElementById("modalClose");
+
+const modalTitle = document.getElementById("modalTitle");
+const modalMeta = document.getElementById("modalMeta");
+const modalBenefit = document.getElementById("modalBenefit");
+const modalDesc = document.getElementById("modalDesc");
+const modalImg = document.getElementById("modalImg");
+
+document.querySelectorAll(".member-shop-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    modalTitle.innerText = card.dataset.title;
+    modalMeta.innerText = card.dataset.meta;
+    modalBenefit.innerText = card.dataset.benefit;
+    modalDesc.innerText = card.dataset.desc;
+    modalImg.src = card.dataset.img;
+
+    modal.style.display = "flex";
+  });
+});
+
+// 닫기
+modalClose.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// 바깥 클릭 시 닫기
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
