@@ -909,3 +909,9 @@ img {
     font-size: 16px;
   }
 }
+.member-shop-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 2줄까지만 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
