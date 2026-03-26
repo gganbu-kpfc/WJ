@@ -30,3 +30,31 @@ const observer = new IntersectionObserver(
 );
 
 fadeTargets.forEach((item) => observer.observe(item));
+document.addEventListener("DOMContentLoaded", async () => {
+  if (!window.sb) return;
+
+  const { data, error } = await window.sb.auth.getUser();
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const user = data.user;
+  const loginLinks = document.querySelectorAll(".nav-login");
+
+  loginLinks.forEach((link) => {
+    if (user) {
+      link.textContent = "로그아웃";
+      link.href = "#";
+      link.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await window.sb.auth.signOut();
+        alert("로그아웃 되었습니다.");
+        window.location.href = "index.html";
+      });
+    } else {
+      link.textContent = "로그인";
+      link.href = "login.html";
+    }
+  });
+});
