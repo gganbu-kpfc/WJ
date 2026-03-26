@@ -1,9 +1,8 @@
-// 로그인
 document.getElementById("loginBtn").addEventListener("click", async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { error } = await window.sb.auth.signInWithPassword({
     email,
     password,
   });
@@ -21,7 +20,7 @@ document.getElementById("signupBtn").addEventListener("click", async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const { error } = await supabase.auth.signUp({
+  const { error } = await window.sb.auth.signUp({
     email,
     password,
   });
@@ -30,6 +29,6 @@ document.getElementById("signupBtn").addEventListener("click", async () => {
     alert("회원가입 실패");
     console.error(error);
   } else {
-    alert("회원가입 성공 (이메일 확인 필요)");
+    alert("회원가입 성공");
   }
 });
