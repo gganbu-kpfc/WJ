@@ -1,26 +1,30 @@
 document.getElementById("shopForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const userResult = await supabase.auth.getUser();
+  const userResult = await window.sb.auth.getUser();
   const user = userResult.data.user;
 
   if (!user) {
     alert("로그인 후 이용해주세요");
+    window.location.href = "login.html";
     return;
   }
 
-  const form = e.target;
-
-  const ownerName = form.querySelector('input[placeholder="대표자 이름 입력"]').value;
-  const shopName = form.querySelector('input[placeholder="업체명 입력"]').value;
-  const category = form.querySelector('input[placeholder="예: 술집, 카페, 네일샵"]').value;
-  const address = form.querySelector('input[placeholder="예: 원주시 단계동"]').value;
-  const benefit = form.querySelector('input[placeholder="예: 음료 1병 제공"]').value;
-  const shortDesc = form.querySelector('textarea[placeholder="업체를 간단히 소개해주세요"]').value;
-  const longDesc = form.querySelector('textarea[placeholder="업체 상세 설명 입력"]').value;
+  const ownerName = document.getElementById("ownerName").value.trim();
+  const shopName = document.getElementById("shopName").value.trim();
+  const category = document.getElementById("category").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const benefit = document.getElementById("benefit").value.trim();
+  const shortDesc = document.getElementById("shortDesc").value.trim();
+  const longDesc = document.getElementById("longDesc").value.trim();
 
   const imageInput = document.getElementById("shopImages");
   const files = imageInput.files;
+
+  if (!ownerName || !shopName) {
+    alert("대표자명과 업체명은 필수입니다.");
+    return;
+  }
 
   if (files.length > 3) {
     alert("사진은 최대 3장까지 업로드 가능합니다.");
@@ -35,7 +39,7 @@ document.getElementById("shopForm").addEventListener("submit", async (e) => {
     const fileName = `${user.id}_${Date.now()}_${i}.${fileExt}`;
     const filePath = `member-shops/${fileName}`;
 
-    const { error: uploadError } = await supabase.storage
+    const { error: uploadError } = await window.sb.storage
       .from("shop-images")
       .upload(filePath, file);
 
@@ -45,30 +49,30 @@ document.getElementById("shopForm").addEventListener("submit", async (e) => {
       return;
     }
 
-    const { data: publicUrlData } = supabase.storage
+    const { data: publicUrlData } = window.sb.storage
       .from("shop-images")
       .getPublicUrl(filePath);
 
     imageUrls[i] = publicUrlData.publicUrl;
   }
 
-  const insertData = {
-    user_id: user.id,
-    owner_name: ownerName,
-    shop_name: shopName,
-    category: category,
-    address: address,
-    benefit: benefit,
-    short_desc: shortDesc,
-    long_desc: longDesc,
-    image_url_1: imageUrls[0],
-    image_url_2: imageUrls[1],
-    image_url_3: imageUrls[2],
-  };
-
-  const { error: insertError } = await supabase
+  const { error: insertError } = await window.sb
     .from("member_shops")
-    .insert([insertData]);
+    .insert([
+      {
+        user_id: user.id,
+        owner_name: ownerName,
+        shop_name: shopName,
+        category,
+        address,
+        benefit,
+        short_desc: shortDesc,
+        long_desc: longDesc,
+        image_url_1: imageUrls[0],
+        image_url_2: imageUrls[1],
+        image_url_3: imageUrls[2],
+      },
+    ]);
 
   if (insertError) {
     console.error(insertError);
