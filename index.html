@@ -3,269 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>원주청년소상공인협회 | Wonju Junior Small Business Association</title>
+    <title>원주청년소상공인협회 | 공식 비즈니스 네트워크</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <style>
+        /* [1. Brand Color System] */
         :root {
-            --w-green: #00a98e;
+            --w-green: #00a98e;       /* 로고 메인 에메랄드 */
             --w-green-dark: #008f78;
-            --w-navy: #002d5d;
-            --w-bg-gray: #f8fbfb;
+            --w-navy: #002d5d;        /* 신뢰의 네이비 */
+            --w-navy-dark: #001a35;
+            --w-bg-light: #f4f7f6;
             --w-text: #222;
+            --w-gray: #777;
             --white: #ffffff;
             --kakao: #fee500;
         }
 
+        /* [2. Reset & Typography] */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Pretendard', sans-serif; color: var(--w-text); line-height: 1.7; word-break: keep-all; overflow-x: hidden; }
+        body { 
+            font-family: 'Pretendard', -apple-system, sans-serif; 
+            color: var(--w-text); background-color: var(--white); 
+            line-height: 1.7; word-break: keep-all; overflow-x: hidden;
+        }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-        /* [Header] 메뉴 확장 */
-        header { width: 100%; height: 85px; background: rgba(255,255,255,0.98); position: fixed; top: 0; z-index: 2000; box-shadow: 0 2px 15px rgba(0,0,0,0.08); display: flex; align-items: center; }
-        .header-inner { width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 3%; }
-        .logo { font-size: 1.4rem; font-weight: 900; color: var(--w-green); letter-spacing: -1px; }
-        .nav { display: flex; gap: 30px; }
-        .nav a { font-weight: 700; color: #444; font-size: 1.05rem; }
+        /* [3. Common Layout] */
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 120px 0; }
+        .t-center { text-align: center; }
+        .title-sub { color: var(--w-green); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; display: block; letter-spacing: 2px; }
+        .title-main { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: var(--w-navy); margin-bottom: 25px; line-height: 1.2; }
+
+        /* [4. Header - Sticky] */
+        header {
+            width: 100%; height: 80px; background: rgba(255,255,255,0.95);
+            position: fixed; top: 0; z-index: 2000; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            display: flex; align-items: center; backdrop-filter: blur(10px);
+        }
+        .header-inner { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; }
+        .logo { font-size: 1.4rem; font-weight: 900; color: var(--w-green); letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .nav { display: flex; gap: 35px; }
+        .nav a { font-weight: 700; color: var(--w-navy); font-size: 1rem; }
         .nav a:hover { color: var(--w-green); }
-        .nav a.active { color: var(--w-green); }
-        .util { display: flex; gap: 10px; }
-        .btn-sm { padding: 8px 20px; border-radius: 5px; font-weight: 800; font-size: 0.85rem; }
+        .btn-top-login { background: var(--w-navy); color: #fff; padding: 10px 25px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; }
 
-        /* [Hero] */
-        .hero { height: 75vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
-        .hero h1 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.2; margin-bottom: 25px; }
-        
-        /* [Notice - Admin Only] */
-        .admin-notice { background: var(--w-navy); color: #fff; padding: 15px 0; }
-        .notice-flex { display: flex; align-items: center; gap: 20px; }
-        .notice-tag { background: var(--w-green); color: #fff; padding: 3px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: bold; }
-        .notice-item { flex: 1; font-size: 0.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        /* [5. Hero Section - Full Visual] */
+        .hero {
+            height: 90vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=80');
+            background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center;
+        }
+        .hero-content h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; margin-bottom: 25px; text-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .hero-content p { font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 300; opacity: 0.9; margin-bottom: 45px; }
 
-        /* [Member Search - 핵심 기능] */
-        .search-section { background: var(--w-bg-gray); padding: 80px 0; }
-        .search-box { max-width: 900px; margin: 0 auto 50px; display: grid; grid-template-columns: 1fr auto; background: #fff; padding: 10px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 2px solid var(--w-green); }
-        .search-box input { border: none; padding: 15px 25px; outline: none; font-size: 1.1rem; }
-        .search-box button { background: var(--w-green); color: #fff; border: none; padding: 0 40px; border-radius: 10px; cursor: pointer; font-weight: 800; }
-        
-        /* [Member Grid] */
-        .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
-        .m-card { background: #fff; border-radius: 20px; border: 1px solid #eee; overflow: hidden; transition: 0.4s; }
-        .m-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .m-body { padding: 30px; }
-        .m-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-        .m-category { color: var(--w-green); font-weight: 800; font-size: 0.85rem; }
-        .m-ceo { font-size: 0.9rem; color: #888; }
-        .m-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; color: var(--w-navy); }
-        .m-info-detail { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
-        .m-info-detail i { color: var(--w-green); width: 20px; }
-        .m-btn-wrap { display: flex; gap: 10px; }
-        .m-btn { flex: 1; text-align: center; padding: 12px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; }
+        /* [6. 협회 슬로건 배너 - Navy] */
+        .slogan-banner { background: var(--w-navy); color: #fff; padding: 80px 0; overflow: hidden; }
+        .slogan-box { border-left: 5px solid var(--w-green); padding-left: 40px; }
+        .slogan-box h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; color: var(--w-green); }
+        .slogan-box p { font-size: 1.3rem; line-height: 1.8; opacity: 0.9; }
 
-        /* [Q&A Section] */
-        .qa-section { padding: 100px 0; }
-        .qa-item { border-bottom: 1px solid #eee; padding: 25px 10px; cursor: pointer; }
-        .qa-question { font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-        .qa-answer { display: none; padding: 20px; background: #f9f9f9; border-radius: 10px; margin-top: 15px; color: #666; }
+        /* [7. 협회장 인사말 - 사이즈 최적화] */
+        .ceo-section { display: flex; gap: 80px; align-items: center; flex-wrap: wrap; }
+        .ceo-img { flex: 0.8; min-width: 320px; position: relative; }
+        .ceo-img img { width: 100%; border-radius: 30px; box-shadow: 25px 25px 0 var(--w-bg-light); transition: 0.5s; }
+        .ceo-img:hover img { transform: scale(1.02); }
+        .ceo-text { flex: 1.2; min-width: 350px; }
+        .ceo-text h4 { color: var(--w-green); font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; }
+        .ceo-text h2 { font-size: 2.3rem; font-weight: 900; margin-bottom: 30px; line-height: 1.3; }
+        .ceo-text p { font-size: 1.1rem; color: #555; margin-bottom: 25px; text-align: justify; }
 
-        /* [Floating Buttons] */
-        .floating { position: fixed; bottom: 30px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
+        /* [8. 협회 활동 사진 섹션 - New] */
+        .activity-section { background: var(--w-bg-light); }
+        .activity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .act-card { height: 350px; border-radius: 20px; overflow: hidden; position: relative; cursor: pointer; }
+        .act-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .act-card:hover img { transform: scale(1.1); }
+        .act-overlay { 
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: #fff;
+        }
+        .act-overlay span { font-size: 0.85rem; font-weight: bold; color: var(--w-green); }
+        .act-overlay h4 { font-size: 1.3rem; margin-top: 5px; }
+
+        /* [9. 회원업장 6개 리스트] */
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 35px; }
+        .m-card { background: #fff; border-radius: 25px; overflow: hidden; border: 1px solid #eee; transition: 0.4s; }
+        .m-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+        .m-thumb { height: 260px; background-size: cover; background-position: center; position: relative; }
+        .m-content { padding: 35px; }
+        .m-tag { font-weight: 800; color: var(--w-green); font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .m-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
+        .m-info-list { margin-bottom: 25px; border-top: 1px solid #f1f1f1; padding-top: 20px; }
+        .m-info-list li { font-size: 0.9rem; color: #666; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .m-info-list i { color: var(--w-green); width: 15px; }
+        .m-btn-group { display: flex; gap: 10px; }
+        .m-btn { flex: 1; text-align: center; padding: 12px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; }
+        .m-btn.green { background: #03c75a; color: #fff; }
+        .m-btn.navy { background: var(--w-navy); color: #fff; }
+
+        /* [10. 가입 안내 & 상담 카드] */
+        .join-section { background: linear-gradient(135deg, var(--w-green) 0%, var(--w-green-dark) 100%); color: #fff; }
+        .join-flex { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+        .join-text { flex: 1; min-width: 350px; }
+        .join-text h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 25px; }
+        .join-card { 
+            flex: 1; background: #fff; border-radius: 30px; padding: 50px; color: #333;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .cond-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 35px; }
+        .cond-item { background: var(--w-bg-light); padding: 20px; border-radius: 15px; text-align: center; }
+        .cond-item span { font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px; }
+        .cond-item p { font-weight: 800; font-size: 1.1rem; color: var(--w-navy); }
+        .contact-btns { display: flex; gap: 15px; }
+        .c-btn { flex: 1; text-align: center; padding: 18px; border-radius: 12px; font-weight: 800; font-size: 1rem; }
+        .c-btn.kakao { background: var(--kakao); color: #3c1e1e; }
+        .c-btn.primary { background: var(--w-green); color: #fff; }
+
+        /* [11. Floating UI & Footer] */
+        .floating { position: fixed; bottom: 30px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
         .f-icon { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: 0.3s; }
+        .f-icon.kakao { background: var(--kakao); }
+        .f-icon.tel { background: var(--w-navy); color: #fff; }
+        .f-icon:hover { transform: scale(1.1); }
 
-        footer { background: #1a1a1a; color: #888; padding: 80px 0 40px; text-align: center; }
+        footer { background: #111; color: #777; padding: 100px 0 50px; text-align: center; }
+        .footer-logo { font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 20px; display: block; }
 
+        /* [Mobile Optimization] */
         @media (max-width: 768px) {
+            header { height: 65px; }
             .nav { display: none; }
-            .search-box { grid-template-columns: 1fr; }
-            .member-grid { grid-template-columns: 1fr; }
+            .section { padding: 80px 0; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .ceo-section { gap: 40px; }
+            .ceo-text h2 { font-size: 1.8rem; }
+            .m-card { border-radius: 15px; }
+            .m-grid { grid-template-columns: 1fr; }
+            .cond-list { grid-template-columns: 1fr; }
+            .join-card { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="header-inner">
-        <a href="#" class="logo">원주청년소상공인협회</a>
-        <nav class="nav">
-            <a href="#about">협회소개</a>
-            <a href="#members">협회원조회</a>
-            <a href="#promotion">홍보게시판</a>
-            <a href="#notice">공지사항</a>
-            <a href="#qa">Q&A</a>
-            <a href="#join">가입문의</a>
-        </nav>
-        <div class="util">
-            <a href="#" class="btn-sm" style="color:var(--w-green)">로그인</a>
-            <a href="#join" class="btn-sm" style="background:var(--w-green); color:#fff">가입신청</a>
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">원주청년소상공인협회</a>
+            <nav class="nav">
+                <a href="#about">협회소개</a>
+                <a href="#ceo">인사말</a>
+                <a href="#activities">협회활동</a>
+                <a href="#members">회원업장</a>
+                <a href="#join">가입문의</a>
+            </nav>
+            <a href="#" class="btn-top-login">로그인</a>
         </div>
-    </div>
-</header>
+    </header>
 
-<section class="hero">
-    <div class="hero-content" data-aos="fade-up">
-        <h1>원주 청년 소상공인의<br>당당한 목소리, 강력한 연대</h1>
-        <p>개인의 이득보다 전체의 권익을 먼저 생각하는 공식 비즈니스 협회</p>
-        <a href="#join" class="btn-sm" style="background:var(--w-green); color:#fff; padding:18px 50px; border-radius:50px; font-size:1.1rem;">협회 가입문의</a>
-    </div>
-</section>
-
-<div class="admin-notice">
-    <div class="container notice-flex">
-        <span class="notice-tag">공지</span>
-        <marquee class="notice-item" behavior="scroll" direction="left">
-            [관리자고정] 2026년 상반기 원주시 청년 소상공인 지원 정책 가이드 배포 안내 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; [필독] 협회 정관 개정안 투표 안내 (4월 15일까지) &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 제3회 원주청년 경제포럼 개최 예정
-        </marquee>
-    </div>
-</div>
-
-<section class="section search-section" id="members">
-    <div class="container">
-        <div class="t-center" style="margin-bottom: 50px;">
-            <h2 style="font-size: 2.2rem; font-weight: 900; color: var(--w-navy);">협회원 업장 조회</h2>
-            <p style="margin-top: 10px; color: #666;">동네명(단계, 무실), 업장명, 대표자명으로 검색해보세요.</p>
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>원주 청년 소상공인의<br>당당한 목소리, 강력한 연대</h1>
+            <p>우리는 지역 소도시의 한계를 넘어 상생의 미래를 설계합니다.</p>
+            <a href="#join" class="btn-main" style="background:var(--w-green); color:#fff; padding:18px 50px; border-radius:50px; font-weight:800; font-size:1.1rem;">협회 합류하기</a>
         </div>
-        
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="검색어를 입력하세요 (예: 단계, 이종현, 카페)" onkeyup="filterMembers()">
-            <button onclick="filterMembers()"><i class="fa fa-search"></i> 검색</button>
-        </div>
+    </section>
 
-        <div class="member-grid" id="memberGrid">
-            <div class="m-card" data-search="단계동 요식업 이종현 원주깐부식당">
-                <div class="m-body">
-                    <div class="m-head">
-                        <span class="m-category">단계동 · 요식업</span>
-                        <span class="m-ceo">대표: 이종현</span>
+    <section class="slogan-banner">
+        <div class="container slogan-box" data-aos="fade-right">
+            <h2>WONJU YOUTH SLOGAN</h2>
+            <p>
+                우리는 원주라는 <strong>소도시</strong>, 청년이라는 <strong>사회적 약자</strong>, 소상공인이라는 <strong>경제적 약자</strong>의 키워드를 모두 품고 있습니다.<br>
+                정당한 권리를 찾고 목소리를 높여 원주 청년들에게 귀감이 되는 협회를 지향합니다.
+            </p>
+        </div>
+    </section>
+
+    <section class="section container" id="ceo">
+        <div class="ceo-section">
+            <div class="ceo-img" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800" alt="협회장 이종현">
+            </div>
+            <div class="ceo-text" data-aos="fade-left">
+                <h4>Greetings</h4>
+                <h2>"원주를 사랑하는 청년 사장님들의<br>가장 든든한 울타리가 되겠습니다."</h2>
+                <p>안녕하십니까, 원주청년소상공인협회 협회장 이종현입니다. 변화무쌍한 시장 환경 속에서 우리 청년 소상공인들이 겪는 고민은 깊어만 가고 있습니다. 혼자 고민하면 한계가 있지만, 함께 모이면 대안이 됩니다.</p>
+                <p>우리 협회는 단순한 친목 단체를 넘어, 실질적인 매출 증대와 전문성 향상을 위한 비즈니스 플랫폼을 지향합니다. 원주의 미래를 책임질 청년 사장님들의 성장을 위해, 저는 언제나 여러분의 곁에서 가장 먼저 움직이겠습니다.</p>
+                <p style="font-weight: 900; color: var(--w-navy); font-size: 1.3rem; margin-top: 40px;">원주청년소상공인협회장 이종현 拜上</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section activity-section" id="activities">
+        <div class="container">
+            <div class="title-area t-center" data-aos="fade-up">
+                <span class="title-sub">GALLERY</span>
+                <h2 class="title-main">협회 주요 활동</h2>
+            </div>
+            <div class="activity-grid">
+                <div class="act-card" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500" alt="정기모임">
+                    <div class="act-overlay">
+                        <span>NETWORKING</span>
+                        <h4>제12회 정기 비즈니스 모임</h4>
                     </div>
-                    <h3 class="m-title">원주 깐부식당</h3>
-                    <div class="m-info-detail">
-                        <p><i class="fa fa-map-marker-alt"></i> 강원도 원주시 단계동 000-00</p>
-                        <p><i class="fa fa-phone"></i> 010-2777-0093</p>
-                        <p><i class="fa fa-info-circle"></i> 청년 사장님의 진심이 담긴 한 끼</p>
+                </div>
+                <div class="act-card" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=500" alt="봉사활동">
+                    <div class="act-overlay">
+                        <span>VOLUNTEER</span>
+                        <h4>원주 지역 소외계층 연탄 봉사</h4>
                     </div>
-                    <div class="m-btn-wrap">
-                        <a href="https://map.naver.com" class="m-btn" style="background:#03c75a; color:#fff;">네이버 플레이스</a>
-                        <a href="http://www.kpfc.kr" class="m-btn" style="background:var(--w-navy); color:#fff;">홈페이지</a>
+                </div>
+                <div class="act-card" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1559223607-a43c990c692c?w=500" alt="정책제안">
+                    <div class="act-overlay">
+                        <span>POLICY</span>
+                        <h4>소상공인 지원 조례 간담회</h4>
+                    </div>
+                </div>
+                <div class="act-card" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=500" alt="세미나">
+                    <div class="act-overlay">
+                        <span>EDUCATION</span>
+                        <h4>청년 창업 디지털 마케팅 세미나</h4>
                     </div>
                 </div>
             </div>
-            <div class="m-card" data-search="무실동 카페 김철수 원주커피">
-                <div class="m-body">
-                    <div class="m-head">
-                        <span class="m-category">무실동 · 카페</span>
-                        <span class="m-ceo">대표: 김철수</span>
-                    </div>
-                    <h3 class="m-title">원주커피 본점</h3>
-                    <div class="m-info-detail">
-                        <p><i class="fa fa-map-marker-alt"></i> 강원도 원주시 무실동 111-22</p>
-                        <p><i class="fa fa-phone"></i> 033-123-4567</p>
-                        <p><i class="fa fa-info-circle"></i> 직접 로스팅하는 스페셜티 커피 전문점</p>
-                    </div>
-                    <div class="m-btn-wrap">
-                        <a href="https://map.naver.com" class="m-btn" style="background:#03c75a; color:#fff;">네이버 플레이스</a>
-                        <a href="http://www.kpfc.kr" class="m-btn" style="background:var(--w-navy); color:#fff;">홈페이지</a>
+        </div>
+    </section>
+
+    <section class="section container" id="members">
+        <div class="title-area t-center" data-aos="fade-up">
+            <span class="title-sub">MEMBERSHIP</span>
+            <h2 class="title-main">협회원 업장 소개</h2>
+        </div>
+        <div class="member-grid">
+            <div class="m-card" data-aos="fade-up">
+                <div class="m-thumb" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800');"></div>
+                <div class="m-content">
+                    <span class="m-tag">무실동 · 카페</span>
+                    <h3 class="m-title">카페 드 원주</h3>
+                    <ul class="m-info-list">
+                        <li><i class="fa fa-map-marker-alt"></i> 강원도 원주시 무실동 000-00</li>
+                        <li><i class="fa fa-phone"></i> 033-000-0000</li>
+                        <li><i class="fa fa-link"></i> gganbu-kpfc.github.io</li>
+                    </ul>
+                    <div class="m-btn-group">
+                        <a href="https://map.naver.com" class="m-btn green" target="_blank">네이버 플레이스</a>
+                        <a href="https://gganbu-kpfc.github.io" class="m-btn navy" target="_blank">홈페이지</a>
                     </div>
                 </div>
             </div>
+            <div class="m-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="m-thumb" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800');"></div>
+                <div class="m-content">
+                    <span class="m-tag">단계동 · 요식업</span>
+                    <h3 class="m-title">원주 깐부갈비</h3>
+                    <ul class="m-info-list">
+                        <li><i class="fa fa-map-marker-alt"></i> 강원도 원주시 단계동 000-00</li>
+                        <li><i class="fa fa-phone"></i> 033-111-1111</li>
+                        <li><i class="fa fa-link"></i> gganbu-kpfc.github.io</li>
+                    </ul>
+                    <div class="m-btn-group">
+                        <a href="https://map.naver.com" class="m-btn green" target="_blank">네이버 플레이스</a>
+                        <a href="https://gganbu-kpfc.github.io" class="m-btn navy" target="_blank">홈페이지</a>
+                    </div>
+                </div>
             </div>
-    </div>
-</section>
-
-<section class="section container" id="promotion">
-    <div class="t-center" style="margin-bottom: 50px;">
-        <h2 style="font-size: 2.2rem; font-weight: 900;">홍보게시판</h2>
-        <p>협회원이라면 누구나 로그인 후 업장을 홍보할 수 있습니다.</p>
-    </div>
-    <table style="width: 100%; border-collapse: collapse;">
-        <tr style="background: #f4f4f4; border-top: 2px solid var(--w-navy);">
-            <th style="padding: 15px;">번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>날짜</th>
-        </tr>
-        <tr style="border-bottom: 1px solid #eee; text-align: center;">
-            <td style="padding: 15px;">3</td>
-            <td style="text-align: left;"><a href="#">[홍보] 이번에 신메뉴 출시했습니다! 협회원님들 놀러오세요.</a></td>
-            <td>이종현</td>
-            <td>2026.04.08</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #eee; text-align: center;">
-            <td style="padding: 15px;">2</td>
-            <td style="text-align: left;"><a href="#">[제휴] 저희 업체랑 협업하실 분 찾습니다.</a></td>
-            <td>박승환</td>
-            <td>2026.04.07</td>
-        </tr>
-    </table>
-    <div style="text-align: right; margin-top: 20px;">
-        <button style="padding: 10px 25px; background: var(--w-green); color: #fff; border: none; border-radius: 5px; font-weight: 800; cursor: pointer;">글쓰기 (로그인 필요)</button>
-    </div>
-</section>
-
-<section class="section bg-gray qa-section" id="qa">
-    <div class="container">
-        <h2 class="t-center" style="margin-bottom: 50px; font-size: 2.2rem; font-weight: 900;">자주 묻는 질문 (Q&A)</h2>
-        <div class="qa-item" onclick="toggleQA(0)">
-            <div class="qa-question">협회 가입은 어떻게 하나요? <i class="fa fa-chevron-down"></i></div>
-            <div class="qa-answer" id="ans0">홈페이지 가입신청 메뉴를 통해 정보를 입력해주시면 사무국에서 확인 후 연락드립니다. 가입비 10만원과 월 회비 1만원이 발생합니다.</div>
+            <div class="m-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="m-thumb" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6958?w=800');"></div>
+                <div class="m-content">
+                    <span class="m-tag">단구동 · 홈케어</span>
+                    <h3 class="m-title">청년 클린마스터</h3>
+                    <ul class="m-info-list">
+                        <li><i class="fa fa-map-marker-alt"></i> 강원도 원주시 단구동 000-00</li>
+                        <li><i class="fa fa-phone"></i> 010-0000-0000</li>
+                        <li><i class="fa fa-link"></i> gganbu-kpfc.github.io</li>
+                    </ul>
+                    <div class="m-btn-group">
+                        <a href="https://map.naver.com" class="m-btn green" target="_blank">네이버 플레이스</a>
+                        <a href="https://gganbu-kpfc.github.io" class="m-btn navy" target="_blank">홈페이지</a>
+                    </div>
+                </div>
+            </div>
+            <div class="m-card" data-aos="fade-up">
+                <div class="m-thumb" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800');"></div>
+                <div class="m-content">
+                    <span class="m-tag">무실동 · 경영컨설팅</span>
+                    <h3 class="m-title">깐부파트너스</h3>
+                    <ul class="m-info-list">
+                        <li><i class="fa fa-map-marker-alt"></i> 강원도 원주시 무실동 깐부빌딩</li>
+                        <li><i class="fa fa-phone"></i> 010-2777-0093</li>
+                        <li><i class="fa fa-link"></i> gganbu-kpfc.github.io</li>
+                    </ul>
+                    <div class="m-btn-group">
+                        <a href="https://map.naver.com" class="m-btn green" target="_blank">네이버 플레이스</a>
+                        <a href="https://gganbu-kpfc.github.io" class="m-btn navy" target="_blank">홈페이지</a>
+                    </div>
+                </div>
+            </div>
+            <div class="m-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="m-thumb" style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800');"></div>
+                <div class="m-content">
+                    <span class="m-tag">반곡동 · IT서비스</span>
+                    <h3 class="m-title">원주 테크솔루션</h3>
+                    <ul class="m-info-list">
+                        <li><i class="fa fa-map-marker-alt"></i> 원주시 혁신도시 테크노밸리</li>
+                        <li><i class="fa fa-phone"></i> 033-222-2222</li>
+                        <li><i class="fa fa-link"></i> gganbu-kpfc.github.io</li>
+                    </ul>
+                    <div class="m-btn-group">
+                        <a href="https://map.naver.com" class="m-btn green" target="_blank">네이버 플레이스</a>
+                        <a href="https://gganbu-kpfc.github.io" class="m-btn navy" target="_blank">홈페이지</a>
+                    </div>
+                </div>
+            </div>
+            <div class="m-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="m-thumb" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800');"></div>
+                <div class="m-content">
+                    <span class="m-tag">기업도시 · 인테리어</span>
+                    <h3 class="m-title">청년 디자인컴퍼니</h3>
+                    <ul class="m-info-list">
+                        <li><i class="fa fa-map-marker-alt"></i> 원주시 지정면 기업도시로</li>
+                        <li><i class="fa fa-phone"></i> 033-333-3333</li>
+                        <li><i class="fa fa-link"></i> gganbu-kpfc.github.io</li>
+                    </ul>
+                    <div class="m-btn-group">
+                        <a href="https://map.naver.com" class="m-btn green" target="_blank">네이버 플레이스</a>
+                        <a href="https://gganbu-kpfc.github.io" class="m-btn navy" target="_blank">홈페이지</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="qa-item" onclick="toggleQA(1)">
-            <div class="qa-question">가입 연령 제한이 있나요? <i class="fa fa-chevron-down"></i></div>
-            <div class="qa-answer" id="ans1">원주에서 사업을 운영하시는 만 45세 미만의 소상공인이라면 누구나 가입 가능합니다.</div>
+    </section>
+
+    <section class="section join-section" id="join">
+        <div class="container join-flex">
+            <div class="join-text" data-aos="fade-right">
+                <h2>원주 청년 사장님들의<br>진짜 목소리가 되어주세요.</h2>
+                <p>협회는 개인의 이익을 넘어, 우리가 처한 현실을 개선하고 정당한 권리를 찾기 위해 존재합니다. 함께 뭉칠 때 더 큰 힘이 생깁니다.</p>
+            </div>
+            <div class="join-card" data-aos="fade-left">
+                <div class="cond-list">
+                    <div class="cond-item"><span>가입비</span><p>10만원</p></div>
+                    <div class="cond-item"><span>월회비</span><p>1만원</p></div>
+                    <div class="cond-item"><span>대상</span><p>만 45세 미만</p></div>
+                    <div class="cond-item"><span>지역</span><p>원주 소상공인</p></div>
+                </div>
+                <div class="contact-btns">
+                    <a href="https://pf.kakao.com/_MdxjKT" class="c-btn kakao" target="_blank">카톡 상담</a>
+                    <a href="tel:010-2777-0093" class="c-btn primary">상담 연결</a>
+                </div>
+            </div>
         </div>
-        <div class="qa-item" onclick="toggleQA(2)">
-            <div class="qa-question">협회의 주요 혜택은 무엇인가요? <i class="fa fa-chevron-down"></i></div>
-            <div class="qa-answer" id="ans2">회원사 간의 비즈니스 매칭, 공동 마케팅 지원, 정책 자금 가이드 제공, 그리고 지역 내 소상공인의 목소리를 대변하는 정책 제안 참여 기회를 드립니다.</div>
+    </section>
+
+    <section class="section container">
+        <div class="title-area t-center">
+            <h2 class="title-main">협회 발자취</h2>
         </div>
+        <div style="border-left: 2px solid var(--w-green); padding-left: 40px; max-width: 800px; margin: 0 auto;">
+            <div style="margin-bottom: 40px; position: relative;">
+                <span style="font-weight: 800; color: var(--w-green);">2026.03</span>
+                <p style="font-size: 1.1rem; margin-top: 5px;">원주 지역 소상공인 실무 정책 제안 및 권익 보호 위원회 구성</p>
+            </div>
+            <div style="margin-bottom: 40px;">
+                <span style="font-weight: 800; color: var(--w-green);">2025.11</span>
+                <p style="font-size: 1.1rem; margin-top: 5px;">회원사 500개소 돌파 및 상생 네트워크 공식 출범</p>
+            </div>
+            <div>
+                <span style="font-weight: 800; color: var(--w-green);">2024.03</span>
+                <p style="font-size: 1.1rem; margin-top: 5px;">원주청년소상공인협회 공식 창립 및 1대 이종현 협회장 취임</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-logo">원주청년소상공인협회</span>
+        <p>강원특별자치도 원주시 무실동 | 대표문의: 010-2777-0093</p>
+        <p style="margin-top: 20px; opacity: 0.4;">&copy; 2026 Wonju Junior Small Business Association. All Rights Reserved.</p>
+    </footer>
+
+    <div class="floating">
+        <a href="https://pf.kakao.com/_MdxjKT" class="f-icon kakao"><i class="fa-comment fa-solid"></i></a>
+        <a href="tel:010-2777-0093" class="f-icon tel"><i class="fa-phone fa-solid"></i></a>
     </div>
-</section>
 
-<footer id="join">
-    <div class="container">
-        <h2 style="color: #fff; margin-bottom: 20px;">원주청년소상공인협회</h2>
-        <p>강원특별자치도 원주시 | 가입문의: 010-2777-0093</p>
-        <div style="margin-top: 30px;">
-            <a href="https://pf.kakao.com/_MdxjKT" style="background:var(--kakao); color:#3c1e1e; padding:15px 40px; border-radius:10px; font-weight:800;">카톡 가입문의하기</a>
-        </div>
-        <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Wonju Junior Small Business Association. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<div class="floating">
-    <a href="https://pf.kakao.com/_MdxjKT" class="f-icon" style="background:var(--kakao);"><i class="fa-comment fa-solid"></i></a>
-    <a href="tel:010-2777-0093" class="f-icon" style="background:var(--w-navy); color:#fff;"><i class="fa-phone fa-solid"></i></a>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    AOS.init({ duration: 1000, once: true });
-
-    // 검색 필터 기능
-    function filterMembers() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('m-card');
-
-        for (let i = 0; i < cards.length; i++) {
-            let data = cards[i].getAttribute('data-search');
-            if (data.toLowerCase().includes(input)) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
-    }
-
-    // Q&A 토글 기능
-    function toggleQA(index) {
-        let ans = document.getElementById('ans' + index);
-        if (ans.style.display === "block") {
-            ans.style.display = "none";
-        } else {
-            ans.style.display = "block";
-        }
-    }
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
