@@ -1,250 +1,271 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>원주청년소상공인협회</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>원주청년소상공인협회 | Wonju Junior Small Business Association</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <style>
+        :root {
+            --w-green: #00a98e;
+            --w-green-dark: #008f78;
+            --w-navy: #002d5d;
+            --w-bg-gray: #f8fbfb;
+            --w-text: #222;
+            --white: #ffffff;
+            --kakao: #fee500;
+        }
 
-<style>
-:root{
-  --navy:#002d5d;
-  --green:#00a98e;
-  --yellow:#f5c518;
-  --text:#222;
-  --sub:#666;
-  --bg:#ffffff;
-  --gray:#f6f7f9;
-  --border:#e5e7eb;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Pretendard', sans-serif; color: var(--w-text); line-height: 1.7; word-break: keep-all; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:system-ui;
-  background:#fff;
-  color:var(--text);
-  line-height:1.7;
-}
-.container{width:min(1200px, 92%);margin:auto;}
-.section{padding:100px 0;}
+        /* [Header] 메뉴 확장 */
+        header { width: 100%; height: 85px; background: rgba(255,255,255,0.98); position: fixed; top: 0; z-index: 2000; box-shadow: 0 2px 15px rgba(0,0,0,0.08); display: flex; align-items: center; }
+        .header-inner { width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 3%; }
+        .logo { font-size: 1.4rem; font-weight: 900; color: var(--w-green); letter-spacing: -1px; }
+        .nav { display: flex; gap: 30px; }
+        .nav a { font-weight: 700; color: #444; font-size: 1.05rem; }
+        .nav a:hover { color: var(--w-green); }
+        .nav a.active { color: var(--w-green); }
+        .util { display: flex; gap: 10px; }
+        .btn-sm { padding: 8px 20px; border-radius: 5px; font-weight: 800; font-size: 0.85rem; }
 
-/* header */
-header{
-  height:80px;
-  border-bottom:1px solid var(--border);
-  background:#fff;
-}
-.header-inner{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.logo{
-  font-weight:900;
-  color:var(--navy);
-  font-size:20px;
-}
-nav{
-  display:flex;
-  gap:30px;
-}
-nav a{
-  font-weight:600;
-  font-size:14px;
-}
+        /* [Hero] */
+        .hero { height: 75vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.2; margin-bottom: 25px; }
+        
+        /* [Notice - Admin Only] */
+        .admin-notice { background: var(--w-navy); color: #fff; padding: 15px 0; }
+        .notice-flex { display: flex; align-items: center; gap: 20px; }
+        .notice-tag { background: var(--w-green); color: #fff; padding: 3px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: bold; }
+        .notice-item { flex: 1; font-size: 0.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-/* hero */
-.hero{
-  padding:120px 0 80px;
-  text-align:center;
-}
-.hero h1{
-  font-size:48px;
-  font-weight:900;
-  letter-spacing:-0.03em;
-  margin-bottom:20px;
-}
-.hero p{
-  color:var(--sub);
-  max-width:700px;
-  margin:auto;
-}
+        /* [Member Search - 핵심 기능] */
+        .search-section { background: var(--w-bg-gray); padding: 80px 0; }
+        .search-box { max-width: 900px; margin: 0 auto 50px; display: grid; grid-template-columns: 1fr auto; background: #fff; padding: 10px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 2px solid var(--w-green); }
+        .search-box input { border: none; padding: 15px 25px; outline: none; font-size: 1.1rem; }
+        .search-box button { background: var(--w-green); color: #fff; border: none; padding: 0 40px; border-radius: 10px; cursor: pointer; font-weight: 800; }
+        
+        /* [Member Grid] */
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .m-card { background: #fff; border-radius: 20px; border: 1px solid #eee; overflow: hidden; transition: 0.4s; }
+        .m-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .m-body { padding: 30px; }
+        .m-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .m-category { color: var(--w-green); font-weight: 800; font-size: 0.85rem; }
+        .m-ceo { font-size: 0.9rem; color: #888; }
+        .m-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; color: var(--w-navy); }
+        .m-info-detail { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
+        .m-info-detail i { color: var(--w-green); width: 20px; }
+        .m-btn-wrap { display: flex; gap: 10px; }
+        .m-btn { flex: 1; text-align: center; padding: 12px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; }
 
-/* 선언문 */
-.statement{
-  border-top:3px solid var(--navy);
-  padding-top:50px;
-}
-.statement h2{
-  font-size:34px;
-  font-weight:900;
-  line-height:1.6;
-}
-.statement p{
-  margin-top:20px;
-  font-size:20px;
-  line-height:2;
-}
+        /* [Q&A Section] */
+        .qa-section { padding: 100px 0; }
+        .qa-item { border-bottom: 1px solid #eee; padding: 25px 10px; cursor: pointer; }
+        .qa-question { font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .qa-answer { display: none; padding: 20px; background: #f9f9f9; border-radius: 10px; margin-top: 15px; color: #666; }
 
-.key{
-  font-weight:900;
-}
-.key.navy{color:var(--navy);}
-.key.green{color:var(--green);}
-.key.yellow{color:var(--yellow);}
+        /* [Floating Buttons] */
+        .floating { position: fixed; bottom: 30px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
+        .f-icon { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: 0.3s; }
 
-/* 소개 */
-.about{
-  background:var(--gray);
-}
-.about h3{
-  font-size:30px;
-  font-weight:900;
-  margin-bottom:20px;
-}
-.about p{
-  color:var(--sub);
-  max-width:800px;
-}
+        footer { background: #1a1a1a; color: #888; padding: 80px 0 40px; text-align: center; }
 
-/* 회장 */
-.chairman{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:center;
-}
-.chairman img{
-  width:100%;
-  height:400px;
-  object-fit:cover;
-}
-.chairman h3{
-  font-size:32px;
-  font-weight:900;
-  margin-bottom:20px;
-}
-.chairman p{
-  color:var(--sub);
-  margin-bottom:14px;
-}
-
-/* 활동 */
-.activity-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-.activity-card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-.activity-card p{
-  margin-top:10px;
-  font-weight:700;
-}
-
-/* 반응형 */
-@media(max-width:900px){
-  .chairman{grid-template-columns:1fr;}
-  .activity-grid{grid-template-columns:1fr;}
-}
-</style>
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .search-box { grid-template-columns: 1fr; }
+            .member-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-  <div class="container header-inner">
-    <div class="logo">원주청년소상공인협회</div>
-    <nav>
-      <a href="#">협회소개</a>
-      <a href="#">인사말</a>
-      <a href="#">협회활동</a>
-      <a href="#">업장소개</a>
-      <a href="#">가입안내</a>
-    </nav>
-  </div>
+    <div class="header-inner">
+        <a href="#" class="logo">원주청년소상공인협회</a>
+        <nav class="nav">
+            <a href="#about">협회소개</a>
+            <a href="#members">협회원조회</a>
+            <a href="#promotion">홍보게시판</a>
+            <a href="#notice">공지사항</a>
+            <a href="#qa">Q&A</a>
+            <a href="#join">가입문의</a>
+        </nav>
+        <div class="util">
+            <a href="#" class="btn-sm" style="color:var(--w-green)">로그인</a>
+            <a href="#join" class="btn-sm" style="background:var(--w-green); color:#fff">가입신청</a>
+        </div>
+    </div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <h1>원주 청년 소상공인의<br>권리를 하나로 모읍니다</h1>
-    <p>
-      지역에서 사업하는 청년 사장님들이 서로 연결되고,
-      실제 힘이 되는 협회를 만들어갑니다.
-    </p>
-  </div>
-</section>
-
-<section class="section statement">
-  <div class="container">
-    <h2>
-      <span class="key navy">원주</span>라는 지역 위에,<br>
-      <span class="key green">청년</span>이라는 시간으로,<br>
-      <span class="key yellow">소상공인</span>이라는 책임을 안고,<br>
-      하나의 <span class="key navy">협회</span>로 모였습니다.
-    </h2>
-
-    <p>
-      우리는 단순한 모임이 아니라,<br>
-      권리를 찾고 목소리를 모아<br>
-      서로에게 실제 힘이 되는 협회를 지향합니다.
-    </p>
-  </div>
-</section>
-
-<section class="section about">
-  <div class="container">
-    <h3>협회 소개</h3>
-    <p>
-      원주청년소상공인협회는 지역 기반 청년 소상공인들이
-      서로 연결되고, 활동하고, 협력할 수 있도록 만들어진 단체입니다.
-    </p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container chairman">
-    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a">
-    <div>
-      <h3>회장 인사말</h3>
-      <p>
-        협회는 단순한 이름이 아니라,
-        실제 움직이는 조직이어야 한다고 생각합니다.
-      </p>
-      <p>
-        이 홈페이지 역시 소개를 넘어
-        연결의 역할을 하게 될 것입니다.
-      </p>
+    <div class="hero-content" data-aos="fade-up">
+        <h1>원주 청년 소상공인의<br>당당한 목소리, 강력한 연대</h1>
+        <p>개인의 이득보다 전체의 권익을 먼저 생각하는 공식 비즈니스 협회</p>
+        <a href="#join" class="btn-sm" style="background:var(--w-green); color:#fff; padding:18px 50px; border-radius:50px; font-size:1.1rem;">협회 가입문의</a>
     </div>
-  </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h3 style="font-size:28px;font-weight:900;margin-bottom:30px;">협회 활동</h3>
-
-    <div class="activity-grid">
-      <div class="activity-card">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
-        <p>정기 모임</p>
-      </div>
-
-      <div class="activity-card">
-        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865">
-        <p>회원 교류</p>
-      </div>
-
-      <div class="activity-card">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
-        <p>간담회</p>
-      </div>
+<div class="admin-notice">
+    <div class="container notice-flex">
+        <span class="notice-tag">공지</span>
+        <marquee class="notice-item" behavior="scroll" direction="left">
+            [관리자고정] 2026년 상반기 원주시 청년 소상공인 지원 정책 가이드 배포 안내 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; [필독] 협회 정관 개정안 투표 안내 (4월 15일까지) &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 제3회 원주청년 경제포럼 개최 예정
+        </marquee>
     </div>
-  </div>
+</div>
+
+<section class="section search-section" id="members">
+    <div class="container">
+        <div class="t-center" style="margin-bottom: 50px;">
+            <h2 style="font-size: 2.2rem; font-weight: 900; color: var(--w-navy);">협회원 업장 조회</h2>
+            <p style="margin-top: 10px; color: #666;">동네명(단계, 무실), 업장명, 대표자명으로 검색해보세요.</p>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="검색어를 입력하세요 (예: 단계, 이종현, 카페)" onkeyup="filterMembers()">
+            <button onclick="filterMembers()"><i class="fa fa-search"></i> 검색</button>
+        </div>
+
+        <div class="member-grid" id="memberGrid">
+            <div class="m-card" data-search="단계동 요식업 이종현 원주깐부식당">
+                <div class="m-body">
+                    <div class="m-head">
+                        <span class="m-category">단계동 · 요식업</span>
+                        <span class="m-ceo">대표: 이종현</span>
+                    </div>
+                    <h3 class="m-title">원주 깐부식당</h3>
+                    <div class="m-info-detail">
+                        <p><i class="fa fa-map-marker-alt"></i> 강원도 원주시 단계동 000-00</p>
+                        <p><i class="fa fa-phone"></i> 010-2777-0093</p>
+                        <p><i class="fa fa-info-circle"></i> 청년 사장님의 진심이 담긴 한 끼</p>
+                    </div>
+                    <div class="m-btn-wrap">
+                        <a href="https://map.naver.com" class="m-btn" style="background:#03c75a; color:#fff;">네이버 플레이스</a>
+                        <a href="http://www.kpfc.kr" class="m-btn" style="background:var(--w-navy); color:#fff;">홈페이지</a>
+                    </div>
+                </div>
+            </div>
+            <div class="m-card" data-search="무실동 카페 김철수 원주커피">
+                <div class="m-body">
+                    <div class="m-head">
+                        <span class="m-category">무실동 · 카페</span>
+                        <span class="m-ceo">대표: 김철수</span>
+                    </div>
+                    <h3 class="m-title">원주커피 본점</h3>
+                    <div class="m-info-detail">
+                        <p><i class="fa fa-map-marker-alt"></i> 강원도 원주시 무실동 111-22</p>
+                        <p><i class="fa fa-phone"></i> 033-123-4567</p>
+                        <p><i class="fa fa-info-circle"></i> 직접 로스팅하는 스페셜티 커피 전문점</p>
+                    </div>
+                    <div class="m-btn-wrap">
+                        <a href="https://map.naver.com" class="m-btn" style="background:#03c75a; color:#fff;">네이버 플레이스</a>
+                        <a href="http://www.kpfc.kr" class="m-btn" style="background:var(--w-navy); color:#fff;">홈페이지</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
 </section>
 
+<section class="section container" id="promotion">
+    <div class="t-center" style="margin-bottom: 50px;">
+        <h2 style="font-size: 2.2rem; font-weight: 900;">홍보게시판</h2>
+        <p>협회원이라면 누구나 로그인 후 업장을 홍보할 수 있습니다.</p>
+    </div>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr style="background: #f4f4f4; border-top: 2px solid var(--w-navy);">
+            <th style="padding: 15px;">번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee; text-align: center;">
+            <td style="padding: 15px;">3</td>
+            <td style="text-align: left;"><a href="#">[홍보] 이번에 신메뉴 출시했습니다! 협회원님들 놀러오세요.</a></td>
+            <td>이종현</td>
+            <td>2026.04.08</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee; text-align: center;">
+            <td style="padding: 15px;">2</td>
+            <td style="text-align: left;"><a href="#">[제휴] 저희 업체랑 협업하실 분 찾습니다.</a></td>
+            <td>박승환</td>
+            <td>2026.04.07</td>
+        </tr>
+    </table>
+    <div style="text-align: right; margin-top: 20px;">
+        <button style="padding: 10px 25px; background: var(--w-green); color: #fff; border: none; border-radius: 5px; font-weight: 800; cursor: pointer;">글쓰기 (로그인 필요)</button>
+    </div>
+</section>
+
+<section class="section bg-gray qa-section" id="qa">
+    <div class="container">
+        <h2 class="t-center" style="margin-bottom: 50px; font-size: 2.2rem; font-weight: 900;">자주 묻는 질문 (Q&A)</h2>
+        <div class="qa-item" onclick="toggleQA(0)">
+            <div class="qa-question">협회 가입은 어떻게 하나요? <i class="fa fa-chevron-down"></i></div>
+            <div class="qa-answer" id="ans0">홈페이지 가입신청 메뉴를 통해 정보를 입력해주시면 사무국에서 확인 후 연락드립니다. 가입비 10만원과 월 회비 1만원이 발생합니다.</div>
+        </div>
+        <div class="qa-item" onclick="toggleQA(1)">
+            <div class="qa-question">가입 연령 제한이 있나요? <i class="fa fa-chevron-down"></i></div>
+            <div class="qa-answer" id="ans1">원주에서 사업을 운영하시는 만 45세 미만의 소상공인이라면 누구나 가입 가능합니다.</div>
+        </div>
+        <div class="qa-item" onclick="toggleQA(2)">
+            <div class="qa-question">협회의 주요 혜택은 무엇인가요? <i class="fa fa-chevron-down"></i></div>
+            <div class="qa-answer" id="ans2">회원사 간의 비즈니스 매칭, 공동 마케팅 지원, 정책 자금 가이드 제공, 그리고 지역 내 소상공인의 목소리를 대변하는 정책 제안 참여 기회를 드립니다.</div>
+        </div>
+    </div>
+</section>
+
+<footer id="join">
+    <div class="container">
+        <h2 style="color: #fff; margin-bottom: 20px;">원주청년소상공인협회</h2>
+        <p>강원특별자치도 원주시 | 가입문의: 010-2777-0093</p>
+        <div style="margin-top: 30px;">
+            <a href="https://pf.kakao.com/_MdxjKT" style="background:var(--kakao); color:#3c1e1e; padding:15px 40px; border-radius:10px; font-weight:800;">카톡 가입문의하기</a>
+        </div>
+        <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Wonju Junior Small Business Association. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<div class="floating">
+    <a href="https://pf.kakao.com/_MdxjKT" class="f-icon" style="background:var(--kakao);"><i class="fa-comment fa-solid"></i></a>
+    <a href="tel:010-2777-0093" class="f-icon" style="background:var(--w-navy); color:#fff;"><i class="fa-phone fa-solid"></i></a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+
+    // 검색 필터 기능
+    function filterMembers() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('m-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let data = cards[i].getAttribute('data-search');
+            if (data.toLowerCase().includes(input)) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+
+    // Q&A 토글 기능
+    function toggleQA(index) {
+        let ans = document.getElementById('ans' + index);
+        if (ans.style.display === "block") {
+            ans.style.display = "none";
+        } else {
+            ans.style.display = "block";
+        }
+    }
+</script>
 </body>
-</html>
 </html>
